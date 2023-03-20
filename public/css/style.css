@@ -1,0 +1,250 @@
+* {
+    margin: 0;
+    padding: 0;
+    border-color: #979797 !important;
+    font-size: 15px !important;
+}
+
+a{
+    text-decoration: none;
+    color: #b7cd1b;
+}
+/* Start login page Css */
+
+.bg-login {
+    background: #b7cd1b url('../images/login-bg.png');
+    background-size: inherit;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    padding: 168.5px 0px;
+}
+
+.login-form {
+    padding: 50px;
+}
+
+.login-form input {
+    background-color: transparent;
+    border: 2px solid #000;
+    border-radius: unset;
+}
+
+.login-form input:focus {
+    background-color: transparent;
+    border: 2px solid #000;
+    border-radius: unset;
+    box-shadow: none;
+}
+
+.login-form button {
+    border-radius: unset;
+    padding: 8px 30px;
+}
+
+@media only screen and (max-width: 600px) {
+    .bg-login {
+        padding: 125px 0px;
+    }
+}
+
+
+/* END login Page CSS */
+
+
+/* Start Index Page CSS */
+header .humger-left-menu{
+    margin-left: 50rem;
+}
+header .humger-right-menu{
+    margin-left: -2rem;
+}
+header .justify-content-end .nav-item h5{
+    margin-top: 8px;
+}
+.offcanvas.offcanvas-end{
+    width: 250px !important;
+}
+
+.navbar-default {
+    background-color: #9c9c9c;
+    padding: 8px 0px !important;
+}
+
+.navbar-toggler {
+    padding: 0px;
+    font-size: var(--bs-navbar-toggler-font-size);
+    line-height: 1;
+    background-color: transparent;
+    border: none;
+    border-radius: unset;
+    font-size: 30px;
+}
+
+.navbar-toggler:focus {
+    box-shadow: none;
+    font-size: 30px;
+}
+
+.page-content {
+    margin-top: 55px;
+}
+
+/* tab menu css start */
+
+.tab-menu .nav .nav-item a{
+    color: #000;
+    font-size: 20 px !important;
+    font-weight: 600;
+    padding: 10px 18px;
+}
+
+.tab-menu .nav .nav-item a:hover{
+    background-color: #000;
+    color: #fff;
+    font-size: 20 px !important;
+    font-weight: 600;
+    /* padding: 10px 18px; */
+}
+
+.tab-menu .nav .nav-item .active{
+    background-color: #000;
+    color: #fff;
+    font-size: 20 px !important;
+    font-weight: 600;
+}
+
+.tab-menu .nav .nav-item .active span{
+    background-color: #000;
+    color: #b7cd1b;
+    font-size: 20 px !important;
+    font-weight: 600;
+}
+
+.tab-menu .nav .nav-item .active .tab-total span{
+    background-color: #000;
+    color: #fff;
+    font-size: 20 px !important;
+    font-weight: 600;
+}
+
+/* tab menu css end */
+.search-form input {
+    border-radius: 3px !important;
+    margin-top: 5px;
+}
+
+.search-form .btn-info {
+    margin-top: 26px;
+}
+
+.btn-info {
+    background-color: #b7cd1b;
+    color: #fff;
+    padding: 5px 20px;
+    border-radius: 4px !important;
+    border: 2px solid #b7cd1b !important;
+}
+
+.btn-info:hover {
+    background-color: #fff;
+    color: #b7cd1b;
+    border: 2px solid #b7cd1b !important;
+}
+
+.btn:active {
+    background-color: #fff !important;
+    color: #b7cd1b;
+    border: 2px solid #b7cd1b !important;
+}
+
+.color-box ul li {
+    margin-right: 40px;
+    list-style: none;
+}
+
+.color-box ul li a {
+    display:flex;
+    color: #000;
+}
+
+.color-box ul li a div{
+    width:30px;
+    height:30px;
+}
+
+.color-box ul li a span{
+    margin-top: 4px;
+}
+
+div.table-responsive>div.dataTables_wrapper>div.row {
+    margin-bottom: 10px;
+}
+
+.footer-section {
+    background-color: #9b9b9b;
+    padding: 15px 0px;
+}
+
+.footer-section span {
+    float: right;
+}
+
+@media only screen and (max-width: 600px) {
+    header .justify-content-end {
+        margin-left: 7.1rem;
+        margin-top: -37px;
+    }
+
+    header .justify-content-end .nav-item h5 {
+        font-size: 12px !important;
+    }
+
+    .navbar-toggler {
+        margin-top: -42px;
+    }
+
+    .tab-menu .nav-item {
+        width: 100%;
+        margin-top: 5px;
+    }
+    .tab-menu .nav-item .nav-link {
+        padding: 10px 32px;
+    }
+
+    .color-box ul{
+        display: table;
+    }
+    .color-box ul li{
+        margin-bottom: 5px;
+    }
+    div.dataTables_wrapper div.dataTables_length label {
+        font-weight: normal;
+        text-align: left;
+        white-space: nowrap;
+        margin-bottom: 5px;
+    }
+
+    footer{
+        text-align: center;
+        float: none;
+    }
+    footer p{
+        font-size: 13px !important;
+    }
+    footer span{
+        float: none !important;
+    }
+
+    element.style {
+        width: 250px !important;
+    }
+
+}
+
+/* for add form */
+
+/* .add-form input, select {
+    border-radius: 3px !important;
+    margin-top: 5px;
+} */
