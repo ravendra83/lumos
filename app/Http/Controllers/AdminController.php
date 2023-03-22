@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Models\Task;
 use Carbon\Carbon;
+
 class AdminController extends Controller
 {
     //New project list
@@ -92,4 +93,15 @@ class AdminController extends Controller
         ->get();
         return view('admin.pending',$data);
     }
+    public function holidaycalander(){
+        $title = 'Holiday Calander';
+        $data = DB::table('holidaycalander')->select('title','location','holidaydate','id','year')->get();
+        return view('admin.holidaycalander',compact('title','data'));
+    }
+    public function deleteholiday($id){        
+        $holiday = DB::table('holidaycalander')->where('id','=',$id)->delete();
+        //$holiday->delete();
+        return back()->with('success', 'holiday has been deleted successfully');
+    }
+    
 }

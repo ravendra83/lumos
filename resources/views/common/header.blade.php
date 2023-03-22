@@ -42,6 +42,9 @@
                                         <a class="nav-link" href="{{url('admin/dashboard/users')}}">Users</a>
                                     </li>
                                     <li class="nav-item">
+                                        <a class="nav-link" href="{{url('admin/dashboard/holiday')}}">Holiday Calendar</a>
+                                    </li>
+                                    <li class="nav-item">
                                         <a href="{{url('logout')}}">Logout</a>
                                     </li>    
                                     <!--<li class="nav-item dropdown">

@@ -23,12 +23,20 @@ Route::get('/logout',[LoginController::class,'logout']);
 Route::post('/login',[LoginController::class,'authenticate']);
 
 Route::prefix('/admin')->middleware(['auth','admincheck'])->group(function(){ 
-
 Route::get('/dashboard/newprojects',[AdminController::class,'dashboard']);
 Route::get('/dashboard/todayprojects',[AdminController::class,'todayproject']);
 Route::get('/dashboard/weekprojects',[AdminController::class,'weekproject']);
 Route::get('/dashboard/beyondprojects',[AdminController::class,'beyondproject']);
 Route::get('/dashboard/pendingprojects',[AdminController::class,'pendingproject']);
 Route::get('/dashboard/users',[UserController::class,'userlist']);
+Route::get('/dashboard/user/add',[UserController::class,'userform']);
+Route::post('/dashboard/user/save',[UserController::class,'saveuser'])->name('saveuser');
+Route::get('/dashboard/user/gettl/{lan}',[UserController::class,'getTl']);
+Route::get('/dashboard/user/delete/{id}', [UserController::class,'deleteuser']);
+Route::get('/dashboard/user/edit/{id}', [UserController::class,'edituser']);
+Route::post('/dashboard/user/update/{id}',[UserController::class,'update'])->name('updateuser');
+Route::get('/dashboard/holiday', [AdminController::class,'holidaycalander']);
+Route::get('/dashboard/holiday/delete/{id}', [AdminController::class,'deleteholiday']);
+
 
 });

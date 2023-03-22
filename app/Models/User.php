@@ -42,8 +42,4 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
-    public static function userType($type){
-       $arr = array('2'=>'PM');       
-       return $arr[$type];
-    }
 }
