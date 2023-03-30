@@ -65,6 +65,52 @@ header .justify-content-end .nav-item h5{
 .offcanvas.offcanvas-end{
     width: 250px !important;
 }
+.offcanvas-header {
+    background: #727272;
+    padding: 0 !important;
+    justify-content:unset !important;
+}
+.offcanvas-header button.btn-close{
+    margin-left: 130px;
+}
+a.nav-link.dropdown-toggle {
+    background-color: #a9a9a929;
+}
+.offcanvas-body a.nav-link {
+    padding-left: 10px;
+    font-size: 15px !important;
+    font-weight: 500;
+    text-transform: capitalize;
+    font-style: normal;
+    border-bottom: 1px solid #e5e5e5 !important;
+}
+
+.offcanvas-body a:hover {
+    color: #fff !important;
+    background-color: #b7cd1b;
+    border-bottom: 1px solid #b7cd1b !important;
+}
+
+.offcanvas-body a:active {
+    color: #fff !important;
+    background-color: #b7cd1b;
+    border-bottom: 1px solid #b7cd1b !important;
+}
+
+.offcanvas-body a.nav-link i{
+    font-size: 18px !important;
+    font-weight: 800 !important;
+    text-transform: capitalize;
+    font-style: normal;
+}
+i.bi.bi-globe.fs-5 {
+    margin-right: -3rem;
+}
+
+a.nav-link.logout{
+    background-color: #b7cd1b;
+    color: white;
+}
 
 .navbar-default {
     background-color: #9c9c9c;
@@ -241,7 +287,10 @@ div.table-responsive>div.dataTables_wrapper>div.row {
     }
 
 }
-
+.form-check-input{
+    width: 2rem !important;
+    height: 2rem !important;
+}
 /* for add form */
 
 /* .add-form input, select {

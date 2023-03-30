@@ -13,6 +13,7 @@
     </head>
     <body>
 @include('common.header')
+@include('common.popup')
 <section class="page-wrapp">
             <div class="page-content">
                 <div class="container-fluid">
@@ -140,13 +141,18 @@
                             </ul>
                         </div>
                     </div>
+                    <!-- for Buttons -->
+                    <div>
+                        <button class="btn btn-info" id="assign">Assign</button>
+                        <button class="btn btn-info" id="dchange">Date Change</button>
+                    </div>
                     <!-- table data for list view -->
                     <div class="card p-4 mt-2 mb-5 rounded-0">
                         <div class="table-responsive">
                             <table id="datatable" class="text-center table nowrap table-bordered border-primary" style="width:100%">
                                 <thead>
                                     <tr>
-                                        <th class="text-center"><input type="checkbox"></th>
+                                        <th class="text-center"><input type="checkbox" id="select-all" class="form-check-input"></th>
                                         <th class="text-center">Title</th>                                       
                                         <th class="text-center">Words</th>
                                         <th class="text-center">Language</th>
@@ -176,7 +182,7 @@
                                     @php $bgcolor = "#F9BBDC" @endphp
                                     @endif
                                     <tr style="background-color:{{$bgcolor}}">
-                                        <td><input type="checkbox"></td>
+                                        <td><input type="checkbox" name="id[]" value="{{$list->id}}" class="form-check-input"></td>
                                         <td>{{$list->title}}</td>
                                         <td>{{$list->worldcount}}</td>
                                         <td>{{$list->targetlanguage}}</td>
@@ -205,12 +211,54 @@
     $(document).ready(function(){
         $('#datatable').DataTable({
             'columnDefs': [ {
-                'targets': [1], // column index (start from 0)
+                'targets': [0], // column index (start from 0)
                 'orderable': false, // set orderable false for selected columns
             }],
+            order: [[1, 'asc']],
             paging: false,
             scrollX: 490,
 
         });
+    });
+    $(document).ready(function() {
+        $('#select-all').click(function() {
+            $('input[type="checkbox"]').prop('checked', this.checked);
+        })
+        $('#dchange').click(function(){
+            if (($('input[type=checkbox]:checked').length) == 0) {
+                    alert("Please select at least one task to change the date.");
+                    return false;
+            }
+            var checkbox_value = "";                    
+            $(".form-check-input:checkbox").each(function () {
+                var ischecked = $(this).is(":checked");
+                if (ischecked) {
+                    checkbox_value += $(this).val() + "|";                            
+                }
+            });            
+            $('#tid').val(checkbox_value);
+            $('#dateChange-popup').modal('show');
+        })
+        $('#myForm').submit(function(e) {            
+            e.preventDefault();
+            $.ajax({
+                type: "POST",
+                url: "/admin/dashboard/reviewtask/updatedate",
+                data: $(this).serialize(),
+                success: function(response) {
+                    //console.log(response);
+                    location.reload();
+                },
+                error: function(xhr, status, error) {
+                    console.log(xhr.responseText);
+                }
+            });
+        });
+        $('#assign').click(function(){
+            if (($('input[type=checkbox]:checked').length) == 0) {
+                    alert("Please select at least one task for assign.");
+                    return false;
+            }
+        })
     });
 </script>

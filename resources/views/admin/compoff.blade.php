@@ -20,7 +20,7 @@
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a href="{{url('admin/dashboard/newprojects')}}">Home</a></li>
-                            <li class="breadcrumb-item active" aria-current="page">Holiday Calendar</li>
+                            <li class="breadcrumb-item active" aria-current="page">Comp off</li>
                         </ol>
                     </nav>                   
                     <!-- Bread Crumb END -->
@@ -33,24 +33,31 @@
                                 <div class="modal-body">
                                 <form id="myForm">
                                 @csrf
-                                <div class="row">    
+                                <div class="row">                                  
                                 <div class="col-md-12 mb-3">
-                                    <label class="form-label">Title<span class="text-danger">*</span></label>
-                                    <input  name="title" type="text" class="form-control" required>                                   
+                                    <label class="form-label">Name<span class="text-danger">*</span></label>
+                                    <select name="uid" class="form-select"  aria-label="Default select example" required>
+                                        <option value="">Select</option>
+                                        @foreach ($user as $usr)
+                                        <option value="{{$usr->id}}">{{$usr->name}}</option>
+                                         @endforeach
+                                </select>                                 
                                 </div>
                                 <div class="col-md-12 mb-3">
                                     <label class="form-label">Date<span class="text-danger">*</span></label>
                                     <input  name="date" type="date" class="form-control" required>                                   
                                 </div>
                                 <div class="col-md-12 mb-3">
-                                    <label class="form-label">Location<span class="text-danger">*</span></label>
-                                    <select name="location[]" class="form-select"  multiple aria-label="Default select example" required>
-                                        <option value="">Select</option>
-                                        @foreach ($location as $loc)
-                                        <option value="{{$loc->id}}">{{$loc->name}}</option>
-                                         @endforeach
-                                </select>                                 
+                                    <label class="form-label">Eligible for<span class="text-danger">*</span></label>
+                                    <select name="total" class="form-select"  aria-label="Default select example" required>
+                                        <option value="1">Full Day</option>
+                                        <option value="0.5">Half Day</option>
+                                </select>                                  
                                 </div>
+                                <div class="col-md-12 mb-3">
+                                    <label class="form-label">Details<span class="text-danger">*</span></label>
+                                    <textarea name="details" rows="4" cols="50" class="form-control" required></textarea>                                                                    
+                                </div>                                
                                 <div class="col-md-2 mb-3">
                                 <button type="submit" class="btn btn-primary">Save</button>
                                 </div>
@@ -76,19 +83,21 @@
                             <table id="datatable" class="text-center table nowrap table-bordered border-primary" style="width:100%">
                                 <thead>
                                     <tr>                                      
-                                        <th class="text-center">Title</th>
-                                        <th class="text-center">Location</th>
+                                        <th class="text-center">Name</th>
                                         <th class="text-center">Date</th>
+                                        <th class="text-center">Eligible</th>
+                                        <th class="text-center">Details</th>
                                         <th class="text-center">Action</th>
                                     </tr>
                                 </thead>                                
                                 <tbody>
-                                @foreach($data as $list)
-                                    <tr>                                       
-                                       <td>{{$list->title}}</td>
-                                       <td>{{App\models\Common::getlocation($list->location)}}</td>
-                                       <td>{{ date('D M d Y', strtotime($list->holidaydate))}}</td>
-                                       <td><a href="{{url('/admin/dashboard/holiday/delete')}}/{{$list->id}}">delete</a></td>
+                                @foreach($compoff as $list)
+                                    <tr>
+                                       <td>{{App\models\Common::getlead($list->uid)}}</td>
+                                       <td>{{ date('D M d Y', strtotime($list->date))}}</td>
+                                       <td>{{$list->total}} day</td>
+                                       <td>{{$list->details}}</td>
+                                       <td><a href="{{url('/admin/dashboard/compoff/delete')}}/{{$list->id}}">delete</a></td>
                                     </tr>
                                     @endforeach	                                   
                                 </tbody>
@@ -103,10 +112,9 @@
  $(document).ready(function() {
         $('#myForm').submit(function(e) {
             e.preventDefault();
-
             $.ajax({
                 type: "POST",
-                url: "/admin/dashboard/holiday/save",
+                url: "/admin/dashboard/compoff/save",
                 data: $(this).serialize(),
                 success: function(response) {
                     //console.log(response);

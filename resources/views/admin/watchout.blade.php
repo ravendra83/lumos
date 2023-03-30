@@ -20,9 +20,10 @@
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a href="{{url('admin/dashboard/newprojects')}}">Home</a></li>
-                            <li class="breadcrumb-item active" aria-current="page">Holiday Calendar</li>
+                            <li class="breadcrumb-item active" aria-current="page">Watch Out</li>
                         </ol>
-                    </nav>                   
+                    </nav>
+                   
                     <!-- Bread Crumb END -->
                     <a href="#" class="btn btn-info" data-bs-target="#model-popup" data-bs-toggle="modal">Add <i class="bi bi-plus-square"></i></a>
                      <!-- model popup -->
@@ -35,22 +36,22 @@
                                 @csrf
                                 <div class="row">    
                                 <div class="col-md-12 mb-3">
-                                    <label class="form-label">Title<span class="text-danger">*</span></label>
-                                    <input  name="title" type="text" class="form-control" required>                                   
-                                </div>
+                                    <label class="form-label">Project ID<span class="text-danger">*</span></label>
+                                    <input  name="projectid" type="text" class="form-control" required>                                   
+                                </div>                                
                                 <div class="col-md-12 mb-3">
-                                    <label class="form-label">Date<span class="text-danger">*</span></label>
-                                    <input  name="date" type="date" class="form-control" required>                                   
-                                </div>
-                                <div class="col-md-12 mb-3">
-                                    <label class="form-label">Location<span class="text-danger">*</span></label>
-                                    <select name="location[]" class="form-select"  multiple aria-label="Default select example" required>
+                                    <label class="form-label">Language<span class="text-danger">*</span></label>
+                                    <select name="language[]" class="form-select"  multiple aria-label="Default select example" required>
                                         <option value="">Select</option>
-                                        @foreach ($location as $loc)
-                                        <option value="{{$loc->id}}">{{$loc->name}}</option>
+                                        @foreach ($language as $lan)
+                                        <option value="{{$lan->code}}">{{$lan->name}}</option>
                                          @endforeach
                                 </select>                                 
                                 </div>
+                                <div class="col-md-12 mb-3">
+                                    <label class="form-label">Comment<span class="text-danger">*</span></label>
+                                    <textarea name="comment" rows="4" cols="50" class="form-control" required></textarea>                                                                    
+                                </div> 
                                 <div class="col-md-2 mb-3">
                                 <button type="submit" class="btn btn-primary">Save</button>
                                 </div>
@@ -70,30 +71,31 @@
                     <div class="col-12 text-center content alert alert-success">
                         {{Session::get('success')}}
                     </div>
-                    @endif
-                    <div class="card p-4 mt-2 mb-5 rounded-0">
+                    @endif                    
                         <div class="table-responsive">
                             <table id="datatable" class="text-center table nowrap table-bordered border-primary" style="width:100%">
                                 <thead>
                                     <tr>                                      
-                                        <th class="text-center">Title</th>
-                                        <th class="text-center">Location</th>
-                                        <th class="text-center">Date</th>
+                                        <th class="text-center">Project</th>
+                                        <th class="text-center">Language</th>
+                                        <th class="text-center">Comment</th>
+                                        <th class="text-center">Created Date</th>
                                         <th class="text-center">Action</th>
                                     </tr>
                                 </thead>                                
                                 <tbody>
-                                @foreach($data as $list)
+                                @foreach($watchout as $list)
                                     <tr>                                       
-                                       <td>{{$list->title}}</td>
-                                       <td>{{App\models\Common::getlocation($list->location)}}</td>
-                                       <td>{{ date('D M d Y', strtotime($list->holidaydate))}}</td>
-                                       <td><a href="{{url('/admin/dashboard/holiday/delete')}}/{{$list->id}}">delete</a></td>
+                                       <td>{{$list->projectid}}</td>
+                                       <td>{{$list->language}}</td>
+                                       <td>{{$list->comment}}</td>
+                                       <td>{{ date('D M d Y', strtotime($list->created_at))}}</td>
+                                       <td><a href="{{url('/admin/dashboard/watchout/delete')}}/{{$list->id}}">delete</a></td>
                                     </tr>
                                     @endforeach	                                   
                                 </tbody>
                             </table>
-                        </div>
+                       
                     </div>
                 </div>
             </div>
@@ -106,7 +108,7 @@
 
             $.ajax({
                 type: "POST",
-                url: "/admin/dashboard/holiday/save",
+                url: "/admin/dashboard/watchout/save",
                 data: $(this).serialize(),
                 success: function(response) {
                     //console.log(response);

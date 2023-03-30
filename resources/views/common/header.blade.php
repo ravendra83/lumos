@@ -36,27 +36,36 @@
                             <div class="offcanvas-body">
                                 <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
                                      <li class="nav-item">
-                                        <a class="nav-link" href="{{url('admin/dashboard/newprojects')}}">Dashboard</a>
+                                        <a class="nav-link" href="{{url('admin/dashboard/newprojects')}}"><i class="bi bi-house-door"></i> Dashboard</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link" href="{{url('admin/dashboard/users')}}">Users</a>
+                                        <a class="nav-link" href="{{url('admin/dashboard/users')}}"><i class="bi bi-people"></i> Users</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link" href="{{url('admin/dashboard/holiday')}}">Holiday Calendar</a>
+                                        <a class="nav-link" href="{{url('admin/dashboard/holiday')}}"><i class="bi bi-cup-hot"></i> Holiday Calendar</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a href="{{url('logout')}}">Logout</a>
-                                    </li>    
-                                    <!--<li class="nav-item dropdown">
+                                        <a class="nav-link" href="{{url('admin/dashboard/compoff')}}">Comp Off</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="{{url('admin/dashboard/watchout')}}">Watch Out</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="{{url('admin/dashboard/dar/approved')}}">Dar</a>
+                                    </li>                                    
+                                   
+                                    <li class="nav-item dropdown">
                                         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                        Dropdown
+                                            <i class="bi bi-bar-chart-line"></i> Master Management
                                         </a>
-                                        <ul class="dropdown-menu">
-                                            <li><a class="dropdown-item" href="#">Action</a></li>
-                                            <li><a class="dropdown-item" href="#">Another</a></li>
-                                            <li><a class="dropdown-item" href="#">Something</a></li>
+                                        <ul class="dropdown-menu border-0">
+                                            <li><a class="dropdown-item" href="{{url('admin/dashboard/contenttype')}}">Content Type</a></li>
+                                            <li><a class="dropdown-item" href="{{url('admin/dashboard/product')}}">Product</a></li>
                                         </ul>
-                                    </li>-->
+                                    </li>  
+                                    <li class="nav-item">
+                                        <a class="nav-link logout" href="{{url('logout')}}"><i class="bi bi-box-arrow-in-right"></i> Logout</a>
+                                    </li>
                                 </ul>
                             </div>
                         </div>

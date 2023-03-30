@@ -23,8 +23,12 @@
                             <li class="breadcrumb-item active" aria-current="page">My Dashboard</li>
                         </ol>
                     </nav>
-                    <!-- Bread Crumb END -->
-                    <a href="{{url('/admin/dashboard/user/add')}}">Add</a>
+                    <!-- Bread Crumb END -->                    
+                    <div class="row mb-2">
+                        <div class="col-md-12">
+                            <a href="{{url('/admin/dashboard/user/add')}}" class="btn btn-info float-left">Add <i class="bi bi-plus-square"></i></a>
+                        </div>
+                    </div>
                     @if(Session::has('success'))
                     <div class="col-12 text-center content alert alert-success">
                         {{Session::get('success')}}
